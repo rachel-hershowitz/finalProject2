@@ -1,0 +1,49 @@
+<form [formGroup]="formApartment">
+
+        <div class="radio-box">
+                <label for="whichApartment" class="btn active">
+                        <input type="radio" id="whichApartment" value="whichApartment" name="whichApartment"> דירה חדשה
+                </label>
+        </div>
+
+        <div class="radio-box">
+                <label for="discountApartment" class="btn">
+                        <input type="radio" id="whichApartment" value="whichApartment" name="whichApartment"> דירה
+                        במחיר למשתכן
+                </label>
+        </div>
+
+        <div class="radio-box">
+                <label for="whichApartment" class="btn">
+                        <input type="radio" id="whichApartment" value="whichApartment" name="whichApartment"> דירה
+                        במחיר למשתכן
+                </label>
+        </div>
+
+
+
+        <legend class="content-title">הדירה שקונים היא...
+                <button type="button" class="btn-information-blue" aria-expanded="false" aria-label="מידע נוסף"
+                        data-cc="button|button|מידע נוסף"></button>
+        </legend>
+
+        <label for="firstApartment" data-testid="firstApartment" class="btn">
+                <input type="radio" ngbbutton="" id="firstApartment" value="5" aria-describedby="comment-5"
+                        name="ngb-radio-9"> דירה יחידה
+        </label>
+
+        <label for="changeApartment" data-testid="changeApartment" class="btn">
+                <input type="radio" ngbbutton="" id="changeApartment" value="6" aria-describedby="comment-6"
+                        name="ngb-radio-9"> דירה חילופית
+        </label>
+
+        <label for="investmentApartment" data-testid="investmentApartment" class="btn">
+                <input type="radio" ngbbutton="" id="investmentApartment" value="7" aria-describedby="comment-7"
+                        name="ngb-radio-9"> דירה
+                להשקעה
+        </label>
+
+
+
+        <button type="submit" data-testid="next-btn" class="btn-red-arrow-left">המשך</button>
+</form>

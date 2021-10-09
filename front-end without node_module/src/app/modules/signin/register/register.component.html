@@ -1,0 +1,60 @@
+<form [formGroup]="registerForm" class="container col-sm-4 offset-sm-3" (ngSubmit)="onSubmit()">
+
+    <h2>Register</h2>
+
+    <div class="form-group">
+        <label for="firstName">שם </label>
+        <input type="text" formControlName="firstName" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+            <div *ngIf="f.firstName.errors.required">First Name is required</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="lastName">משפחה </label>
+        <input type="text" formControlName="lastName" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+            <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="identity">תעודת זהות </label>
+        <input type="text" formControlName="identity" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.identity.errors }" />
+        <!-- <div *ngIf="submitted && f.userNaidentityme.errors" class="invalid-feedback">
+            <div *ngIf="f.identity.errors.required">identity is required</div>
+        </div> -->
+    </div>
+
+    <div class="form-group">
+        <label for="userName">שם משתמש </label>
+        <input type="text" formControlName="userName" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.userName.errors }" />
+        <div *ngIf="submitted && f.userName.errors" class="invalid-feedback">
+            <div *ngIf="f.userName.errors.required">userName is required</div>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="password">סיסמה</label>
+        <input type="password" formControlName="password" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Register
+        </button>
+        <a routerLink="/" class="btn btn-link">Cancel</a>
+    </div>
+
+</form>

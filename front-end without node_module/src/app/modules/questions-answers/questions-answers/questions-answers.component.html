@@ -1,0 +1,31 @@
+<!-- questionsList
+<ul class="list-group">
+    <li *ngFor="let q of questionsList" class="list-group-item">
+        <div class="row">
+            <div class="col-3">{{q.id}}</div>
+            <div class="col-3">{{q.data}}</div>
+        </div>
+    </li>
+</ul><br>
+
+answersList
+<ul class="list-group">
+    <li *ngFor="let a of answersList" class="list-group-item">
+        <div class="row">
+            <div class="col-3">{{a.idQuestion}}</div>
+            <div class="col-3">{{a.idAnswer}}</div>
+            <div class="col-3">{{a.data}}</div>
+        </div>
+    </li>
+</ul><br> -->
+
+<h1>questionsAnswersList</h1>
+<ul class="list-group">
+    <li *ngFor="let qa of questionsAnswersList" class="list-group-item">
+        <div class="row">
+            <div class="col-3">{{qa.question.data}}</div>
+            <div *ngFor="let x of qa.answer">{{x.data}}</div>
+        </div>
+    </li>
+</ul>
+<br>

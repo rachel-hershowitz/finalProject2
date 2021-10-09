@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a *ngIf="!ifHaveCurrentUser" routerLink="LoginComponent"> הכנס</a>
+        <a *ngIf="!ifHaveCurrentUser" routerLink="RegisterComponent"> הירשם</a>
+        <a *ngIf="ifHaveCurrentUser" (click)="logOut()"> התנתק</a>
+        <a routerLink="ArticlesComponent"> עמוד הבית</a>
+        <a routerLink="AboutMeComponent"> אודותי</a>
+        <a routerLink="QuestionsAnswersComponent"> שו"ת</a>
+        <a routerLink="ArticlesComponent"> מאמרים</a>
+    </div>
+</nav>
+
+<connect *ngIf="ifHaveCurrentUser"></connect>
+
+<steps *ngIf="ifHaveCurrentUser"></steps>
+
+<!-- <show-details-users></show-details-users> -->
+
+<!-- <a  *ngIf="ifHaveCurrentUser" routerLink="StepsComponent"> step</a> -->
+<!-- <personal-information></personal-information> -->
+<!-- <steps></steps> -->
+
+<router-outlet></router-outlet>

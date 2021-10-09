@@ -1,0 +1,24 @@
+<button (click)="showListCustomer()">צפיה בפרטי הלקוחות</button>
+
+<ul class="list-group">
+    <li (click)="selectedCustomer(customer)" *ngFor="let customer of listCustomer" class="list-group-item">
+        <div class="row">
+            <div class="col-3">{{ customer.identity }}</div>
+            <div class="col-3">{{ customer.firstName }}</div>
+            <div class="col-3">{{ customer.lastName }}</div>
+        </div>
+    </li>
+</ul>
+
+<br>
+
+<ul *ngIf="selectedDetailsMashkanta" class="list-group">
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-3">{{selectedDetailsMashkanta.salaryZug}}</div>
+            <div class="col-3">{{selectedDetailsMashkanta.salaryYou}}</div>
+            <div class="col-3">{{selectedDetailsMashkanta.adressHouse}}</div>
+            <div class="col-3">{{selectedDetailsMashkanta.notes}}</div>
+        </div>
+    </li>
+</ul>
