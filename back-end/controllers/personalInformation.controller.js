@@ -16,6 +16,26 @@ const getPersonalInformation = async (req, res) => {
     }
 }
 
+// const saveAllDetails = async (req, res) => {
+
+//     console.log("***************saveAllDetails****************")
+
+//     let myPersonalInformation = new PersonalInformation(req.body)
+//     let c = await User.findOne({ identity: req.params.id })
+//     myPersonalInformation.userId = c._id
+//     try {
+//         await myPersonalInformation.save();
+//         console.log("success saveAllDetails!!");
+//         res.status(200).json({ myPersonalInformation });
+//     }
+//     catch (error) {
+//         console.log("failed saveAllDetails!!");
+//         console.log("error: " + error);
+//         res.status(500).json({ err: error.message })
+//     }
+// }
+
 module.exports = {
-    getPersonalInformation
+    getPersonalInformation,
+    // saveAllDetails
 }

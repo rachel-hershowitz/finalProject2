@@ -1,5 +1,17 @@
 const mongoose = require('mongoose');
 
+const Status = Object.freeze({
+    "A": "לא נפתחה פניה",
+    "B": "פניה נפתחה, מחכה לאישור מהיועץ",
+    "C": "בטיפול יועץ",
+    "D": "צריך שינוי",
+    "E": "נשלחה בקשה עקרונית מחכה לאישור",
+    "F": "אישור התקבל",
+    "G": "אישור לא התקבל",
+    "H": "מחכה לחתימה",
+    "I": "משכנתא"
+});
+
 const UserSchema = mongoose.Schema({
     identity: {
         type: Number,
@@ -36,8 +48,16 @@ const UserSchema = mongoose.Schema({
     isCustomer: {
         type: Boolean,
         require: true
-    }
+    },
+    status: {
+        type: String,
+        enum: Object.values(Status),
+    },
 })
+
+Object.assign(UserSchema.statics, {
+    Status,
+});
 
 module.exports = mongoose.model('User', UserSchema)
 

@@ -6,22 +6,60 @@ const PersonalInformationSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     },
-    salaryYou: {
-        type: Number,
-        require: true
+    firstName: {
+        type: String
     },
-    salaryZug: {
-        type: Number,
-        require: true
+    lastName: {
+        type: String
     },
-    adressHouse: {
+    identity: {
+        type: Number
+    },
+    areaCode: {
+        type: Number
+    },
+    pel: {
+        type: String,
+    },
+    email: {
+        type: String,
+    },
+    birthDate: {
+        type: String,
+    },
+    countryOfBirth: {
+        type: String,
+    },
+    citizenship: {
+        type: String,
+    },
+    city: {
         type: String,
         require: true
     },
-    notes: {
+    street: {
         type: String,
         require: true
-    }
+    },
+    apartmentRegistration: {
+        type: Boolean
+    },
+    propertyCity: {
+        type: String,
+        require: true
+    },
+    propertyPrice: {
+        type: Number,
+        require: true
+    },
+    propertyMarketValue: {
+        type: Number,
+        require: true
+    },
+    amount: {
+        type: Number,
+        require: true
+    },
 })
 
 module.exports = mongoose.model('PersonalInformation', PersonalInformationSchema)

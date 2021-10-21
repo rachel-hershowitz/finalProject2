@@ -8,6 +8,9 @@ const jwt = require('jsonwebtoken');
 const request = require('request')
 const cors = require('cors')
 
+
+global.__basedir = __dirname;
+
 app.use(express.json())
 // app.use(bodyParser.json());
 console.log("app.js")
@@ -17,7 +20,7 @@ app.use('/', rout)
 
 
 const connectionParams = {
-    // useFindAndModify:true,
+    useFindAndModify: true,
     // useNewUrlParser: true,
     // useCreateIndex: true,
     // useUnifiedTopology: true,

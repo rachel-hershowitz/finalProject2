@@ -1,12 +1,15 @@
 const User = require('../models/user.model');
 const PersonalInformation = require('../models/personalInformation.model');
 const jwt = require('jsonwebtoken');
+const uploadFile = require("../src/middleware/upload");
+const { Status } = require("../models/user.model");
 
 const sign = async (req, res) => {
-    console.log("***************sign****************")
-    debugger
-    let myUser = new User(req.body)
-    myUser.isCustomer = true
+    console.log("***************register****************")
+    console.log(req.body);
+    let myUser = new User(req.body);
+    myUser.isCustomer = true;
+    myUser.status = Status.A;
     console.log(myUser);
     try {
         await myUser.save(myUser);
@@ -35,7 +38,6 @@ const getAllCustomer = async (req, res) => {
         res.status(500).json({ myMessage: error.message })
     }
 }
-
 
 // populate-פותח את האוביקט המסוים
 // select-שולף רק את השדות הרצויים מתוך מה ששלף בפופליט
@@ -118,11 +120,11 @@ const checkLogin = async (req, res) => {
 //         console.log(req.params.userId);
 //         updateCustomer=await Customer.findByIdAndUpdate(req.params.userId,req.body)
 //         await updateCustomer.save()
-//         //res.status(200).json({updateCustomer:updateCustomer})
-//      // user = await Customer.findByIdAndUpdate(req.params.id, req.body)
-//       //user = await Customer.findOneAndUpdate({"name":req.params.name}, req.body)
-//     //   user= await Customer.update({name:req.params.name}, { $set: { name: req.body.name } });
-//       res.send("the user is updated")
+//         res.status(200).json({updateCustomer:updateCustomer})
+//         user = await Customer.findByIdAndUpdate(req.params.id, req.body)
+//         user = await Customer.findOneAndUpdate({"name":req.params.name}, req.body)
+//         user= await Customer.update({name:req.params.name}, { $set: { name: req.body.name } });
+//         res.send("the user is updated")
 //     } catch (err) {
 //       res.status(500).json({ err: err.toString() })
 //     }
@@ -163,28 +165,58 @@ const checkLogin = async (req, res) => {
 //     }
 // }
 
-const createUserDetails = async (req, res) => {
+// const saveAllDetails = async (req, res) => {
 
-    console.log("***************createUserDetails****************")
+//     console.log("***************saveAllDetails****************")
 
-    let myPersonalInformation = new PersonalInformation(req.body)
-    // myPersonalInformation.userRef=req.body.userId;
-    console.log({ "myPersonalInformation": myPersonalInformation });
-    console.log({ "req.body": req.body });
+//     let myPersonalInformation = new PersonalInformation(req.body)
+//     let c = await User.findOne({ identity: req.params.id })
+//     myPersonalInformation.userId = c._id
+//     try {
+//         await myPersonalInformation.save();
+//         console.log("success saveAllDetails!!");
+//         res.status(200).json({ myPersonalInformation });
+//     }
+//     catch (error) {
+//         console.log("failed saveAllDetails!!");
+//         console.log("error: " + error);
+//         res.status(500).json({ err: error.message })
+//     }
+// }
+
+const saveAllDetails = async (req, res) => {
+
+    console.log("***************saveAllDetails****************")
+    let myPersonalInformation;
     let c = await User.findOne({ identity: req.params.id })
-    myPersonalInformation.userId = c._id
-    console.log(myPersonalInformation)
+    let details = await PersonalInformation.findOne({ userId: c._id })
 
-    try {
-        await myPersonalInformation.save();
-        console.log("success create new createUserDetails!!");
-        res.status(200).json({ myPersonalInformation });
+    if (details == null) {
+        console.log("you dont have any details. now we create you!!")
+        myPersonalInformation = new PersonalInformation(req.body)
+        myPersonalInformation.userId = c._id
+        myPersonalInformation.Status = Status.B;
+        console.log(myPersonalInformation.Status);
+        try {
+            await myPersonalInformation.save();
+            console.log("success saveAllDetails!!");
+            res.status(200).json({ myPersonalInformation });
+        }
+        catch (error) {
+            console.log("failed saveAllDetails!!");
+            console.log("error: " + error);
+            res.status(500).json({ err: error.message })
+        }
+    } else {
+        let details = await PersonalInformation.findOneAndUpdate({ userId: c._id }, req.body)
+        myPersonalInformation.Status = Status.B;
+        await details.save();
+        console.log("you have details!!!!!!!!!!!!!!")
     }
-    catch (error) {
-        console.log("failed create new createUserDetails!!");
-        console.log("error: " + error);
-        res.status(500).json({ err: error.message })
-    }
+
+    console.log({ c: c })
+    console.log({ myPersonalInformation: myPersonalInformation })
+    console.log({ details: details })
 }
 
 module.exports = {
@@ -192,7 +224,7 @@ module.exports = {
     getAllCustomer,
     getById,
     checkLogin,
-    createUserDetails
+    saveAllDetails
     // getAllPopulate,
     // getAllPopulateSelectMatch,
     // getByName,
