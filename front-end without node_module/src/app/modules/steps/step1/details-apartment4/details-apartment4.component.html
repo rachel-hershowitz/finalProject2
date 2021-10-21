@@ -1,0 +1,93 @@
+<form novalidate="" scrolltoerror="true" autocomplete="off" class="ng-untouched ng-pristine ng-invalid">
+    <h1 tabindex="0" data-testid="step-title">אז שניה לפני שממשיכים,</h1>
+    <div class="fade-loading in">
+        <ul class="list-red-blue">
+            <li>
+                <ul>
+                    <li>מחיר הדירה:</li>
+                    <li>1,000,000 ש"ח</li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li>סכום המשכנתא המבוקש:</li>
+                    <li>650,000 ש"ח</li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li>זה אומר שיש לי:</li>
+                    <li>350,000 ש"ח</li>
+                </ul>
+            </li>
+        </ul>
+        <div formarrayname="financingSources" class="user-data-gray-box lg-section ng-untouched ng-pristine ng-invalid">
+            <h4>מקורות ההון העצמי</h4>
+            <!---->
+            <div class="ng-untouched ng-pristine ng-invalid">
+                <div class="content-groups">
+                    <div class="content-group"><input id="amount" poalimamountformat="" type="text"
+                            formcontrolname="financingSourceAmount"
+                            class="vv-form-control amount-control ng-untouched ng-pristine ng-invalid"
+                            aria-label="סכוםבשקלים" data-testid="financing-source-amount-0" aria-invalid="false"
+                            placeholder="hidden">
+                        <!----><label for="amount">סכום</label>
+                    </div>
+                    <div class="content-group">
+                        <!-- <poalim-vv-select formcontrolname="financingSourceCode"
+                            class="ng-untouched ng-pristine ng-invalid" aria-invalid="false">
+                            <div ngbdropdown="" poalimstoppropagation="" class="dropdown"><button type="button"
+                                    role="combobox" ngbdropdowntoggle="" class="dropdown-toggle btn-select"
+                                    id="poalim-select-0" aria-owns="listbox-poalim-select-0" aria-expanded="false"><span
+                                        class="btn-focus">מקור</span><span class="text"></span></button>
+                                <div ngbdropdownmenu="" role="listbox" id="listbox-poalim-select-0"
+                                    aria-labelledby="poalim-select-0" x-placement="bottom-left" class="dropdown-menu">
+                                    <button role="option" type="button" ngbdropdownitem="" class="dropdown-item"
+                                        aria-selected="false" aria-checked="false" aria-posinset="1"
+                                        aria-setsize="3">מכירת דירה</button><button role="option" type="button"
+                                        ngbdropdownitem="" class="dropdown-item" aria-selected="false"
+                                        aria-checked="false" aria-posinset="2" aria-setsize="3">הלוואות
+                                        אחרות</button><button role="option" type="button" ngbdropdownitem=""
+                                        class="dropdown-item" aria-selected="false" aria-checked="false"
+                                        aria-posinset="3" aria-setsize="3">הון עצמי</button>
+                                    
+                                </div>
+                            </div>
+                        </poalim-vv-select> -->
+                        <!---->
+                    </div>
+                </div>
+                <!---->
+            </div>
+            <!---->
+        </div>
+        <!----><button type="button" data-testid="add-source" class="btn-plus"> מקור נוסף </button>
+        <!---->
+        <div class="user-data-white-box">
+            <ul class="list-red-blue-light">
+                <li>
+                    <ul role="presentation">
+                        <li>סכום הרכב הון עצמי:</li>
+                        <li>0 ש"ח</li>
+                    </ul>
+                </li>
+                <li>
+                    <ul role="presentation">
+                        <li>נשאר לממן:</li>
+                        <li>350,000 ש"ח</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!---->
+        <div class="action-buttons">
+            <button type="button" data-testid="back-btn" (click)="backBtn()" class="btn-red-arrow-circle-arrow-right"
+                aria-label="חזרה לשלב הקודם">
+                חזור
+            </button>
+            <button (click)="saveDetailsWhichApartment4()" type="submit" data-testid="next-btn"
+                class="btn-red-arrow-left">המשך
+            </button>
+        </div>
+    </div>
+</form>

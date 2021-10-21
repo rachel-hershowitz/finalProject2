@@ -4,12 +4,12 @@ import { DetailsMashkanta } from 'src/app/models/DetailsMashkanta';
 import { User } from 'src/app/models/user.model';
 import { ConnectService } from 'src/app/modules/connect/connect.service';
 import { UserService } from 'src/app/modules/signin/user.service';
-import { StepstService } from '../steps.service';
+import { StepsService } from '../steps/steps.service';
 
 @Component({
   selector: 'step1',
   templateUrl: './step1.component.html',
-  styleUrls: ['./step1.component.scss']
+  // styleUrls: ['./step1.component.scss']
 })
 export class Step1Component implements OnInit {
 
@@ -35,7 +35,7 @@ export class Step1Component implements OnInit {
 
 
 
-  constructor(private _stepsService: StepstService, private _userService: UserService, private _connectService: ConnectService) { }
+  constructor(private _stepsService: StepsService, private _userService: UserService, private _connectService: ConnectService) { }
 
   ngOnInit(): void {
     this.currentCustomer = this._userService.getCurrentUser();

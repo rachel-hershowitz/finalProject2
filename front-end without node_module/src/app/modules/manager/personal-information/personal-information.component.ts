@@ -6,7 +6,7 @@ import { ManagerService } from '../manager.service';
 @Component({
   selector: 'personal-information',
   templateUrl: './personal-information.component.html',
-  styleUrls: ['./personal-information.component.scss']
+  // styleUrls: ['./personal-information.component.scss']
 })
 export class PersonalInformationComponent implements OnInit {
 

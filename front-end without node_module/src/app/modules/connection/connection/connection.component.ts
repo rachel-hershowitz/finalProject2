@@ -11,7 +11,7 @@
 // @Component({
 //   selector: 'app-connection',
 //   templateUrl: './connection.component.html',
-//   styleUrls: ['./connection.component.scss']
+  styleUrls: ['./connection.component.scss']
 // })
 // export class ConnectionComponent implements OnInit {
 //   connectionForm: FormGroup;

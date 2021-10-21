@@ -1,0 +1,31 @@
+<form [formGroup]="formDetailsMashkanta2" class="container col-sm-4 offset-sm-3">
+
+    <h2>כמה פרטים על הדירה עצמה...</h2>
+
+    <div class="form-group">
+        <label for="propertyCity">propertyCity</label>
+        <input type="text" formControlName="propertyCity" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="propertyPrice">propertyPrice</label>
+        <input type="text" formControlName="propertyPrice" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="propertyMarketValue">propertyMarketValue</label>
+        <input type="text" formControlName="propertyMarketValue" class="form-control" />
+    </div>
+
+
+    <button (click)="saveDetailsWhichApartment2()" type="submit" data-testid="next-btn" class="btn-red-arrow-left">המשך
+    </button>
+    <button type="button" data-testid="back-btn" (click)="backBtn()" class="btn-red-arrow-circle-arrow-right"
+        aria-label="חזרה לשלב הקודם">
+        חזור
+    </button>
+
+</form>
+
+
+<router-outlet></router-outlet>

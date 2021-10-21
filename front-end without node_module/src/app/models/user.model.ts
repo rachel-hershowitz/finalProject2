@@ -1,3 +1,5 @@
+import { Status } from "./status.model";
+
 export class User {
 
     identity: string;
@@ -6,9 +8,10 @@ export class User {
     firstName: string;
     lastName: string;
     isCustomer: boolean;
+    status: Status;
 
     constructor() {
         this.isCustomer = true;
+        this.status = Status["לא נפתחה פניה"];
     }
-
 }

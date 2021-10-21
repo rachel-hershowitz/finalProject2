@@ -8,7 +8,7 @@ import { UserService } from '../../signin/user.service';
 @Component({
   selector: 'show-details-users',
   templateUrl: './show-details-users.component.html',
-  styleUrls: ['./show-details-users.component.scss']
+  // styleUrls: ['./show-details-users.component.scss']
 })
 export class ShowDetailsUsersComponent implements OnInit {
 
@@ -24,7 +24,7 @@ export class ShowDetailsUsersComponent implements OnInit {
   }
 
   showListCustomer() {
-    this.userService.getAllcustomer().subscribe(p => {
+    this.userService.getAllCustomer().subscribe(p => {
       this.listCustomer = p;
     })
   }

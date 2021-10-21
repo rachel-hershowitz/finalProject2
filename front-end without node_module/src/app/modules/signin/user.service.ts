@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { DetailsMashkanta } from 'src/app/models/DetailsMashkanta';
 import { User } from 'src/app/models/user.model';
 
 @Injectable()
@@ -36,7 +37,7 @@ export class UserService {
     return this.ifHaveCurrentUser;
   }
 
-  getAllcustomer(): Observable<User[]> {
+  getAllCustomer(): Observable<User[]> {
     return this.http.get<User[]>("http://localhost:5000/getAllcustomer");
   }
 
@@ -53,6 +54,14 @@ export class UserService {
     this.currentUser = null;
     this.ifHaveCurrentUser = false;
   }
+
+  saveDetailsWhichApartment6(aa): Observable<User> {
+    return this.http.post<User>("http://localhost:5000/checkLogin", aa)
+  }
+
+  // saveDetailsWhichApartment6(aa: string): Observable < boolean > {
+  //     return this.http.post<boolean>("http://localhost:5000/saveDetails", aa);
+  // }
 
   // save here current user (you can also save in local storage)
 }

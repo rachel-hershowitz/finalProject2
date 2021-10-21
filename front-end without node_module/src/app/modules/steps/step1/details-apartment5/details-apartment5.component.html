@@ -1,0 +1,131 @@
+<form [formGroup]="formMoreDetails">
+
+    <div class="form-group">
+        <p>האם נחתם כבר חוזה רכישה? </p>
+        <div class="radio-box">
+            <label for="contractSign" class="btn active">
+                <input type="radio" id="contractSign" value="true" name="contractSign" formControlName="contractSign" />
+                כן
+            </label>
+        </div>
+        <div class="radio-box">
+            <label for="contractSign" class="btn active">
+                <input type="radio" id="contractSign" value="false" name="contractSign"
+                    formControlName="contractSign" />
+                לא
+            </label>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <p> בעוד כמה זמן תצטרכו את הכסף? </p>
+        <div class="radio-box">
+            <label for="howMuchLonger" class="btn active">
+                <input type="radio" id="howMuchLonger" value="howMuchLonger.monthAndHalf" name="howMuchLonger"
+                    formControlName="howMuchLonger" />
+                עוד חודש וחצי
+            </label>
+        </div>
+        <div class="radio-box">
+            <label for="howMuchLonger" class="btn active">
+                <input type="radio" id="howMuchLonger" value="howMuchLonger.betweenMonthToThreeMonth"
+                    name="howMuchLonger" formControlName="howMuchLonger" />
+                בין חודש וחצי ל-3 חודשים
+            </label>
+        </div>
+        <div class="radio-box">
+            <label for="howMuchLonger" class="btn active">
+                <input type="radio" id="howMuchLonger" value="howMuchLonger.threeMonth" name="howMuchLonger"
+                    formControlName="howMuchLonger" />
+                בעוד שלוש חודשים או יותר
+            </label>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div id="numberOfPartner" formcontrolname="numberOfPartner">
+            <button type="button" aria-readonly="false" (click)="plus()">+</button>
+            <input type="number" id="numberOfPartner" value="numberOfPartner.value" name="numberOfPartner"
+                formControlName="numberOfPartner" />
+            <button type="button" (click)="minus()">-</button>
+        </div>
+    </div>
+
+    <div class="action-buttons">
+        <button type="button" data-testid="back-btn" (click)="backBtn()" class="btn-red-arrow-circle-arrow-right"
+            aria-label="חזרה לשלב הקודם">
+            חזור
+        </button>
+        <button (click)="saveDetailsWhichApartment5()" type="submit" data-testid="next-btn"
+            class="btn-red-arrow-left">המשך
+        </button>
+    </div>
+
+</form>
+
+<!-- <div class="wizard-content fade-loading in" aria-busy="false">
+    <div>
+        <div class="mortgage-details"></div>
+       
+        <form novalidate="" scrolltoerror="true" class="ng-untouched ng-pristine ng-invalid">
+            <h1 tabindex="0" data-testid="step-title">עוד כמה פרטים חשובים...</h1>
+            <section>
+                <fieldset role="radiogroup" ngbradiogroup="" formcontrolname="contractSignedSwitch"
+                    class="content-group ng-untouched ng-pristine ng-invalid" aria-invalid="false">
+                    <legend class="content-title">האם נחתם כבר חוזה רכישה?</legend>
+                    <div class="radio-box"><label ngbbuttonlabel="" data-testid="contractSigned" for="contractSigned"
+                            class="btn"><input type="radio" id="contractSigned" ngbbutton="" value="true"
+                                name="ngb-radio-2"> כן </label></div>
+                    <div class="radio-box"><label ngbbuttonlabel="" data-testid="notContractSigned"
+                            for="notContractSigned" class="btn"><input type="radio" id="notContractSigned" ngbbutton=""
+                                value="" name="ngb-radio-2"> לא </label></div>
+                </fieldset>
+            </section>
+            <section>
+                <fieldset role="radiogroup" ngbradiogroup="" formcontrolname="whenMoneyIsNeededCode"
+                    class="content-group ng-untouched ng-pristine ng-invalid" aria-invalid="false">
+                    <legend class="content-title">בעוד כמה זמן תצטרכו את הכסף?</legend>
+                    <div class="radio-box"><label ngbbuttonlabel="" for="shortPeriod" data-testid="shortPeriod"
+                            class="btn"><input type="radio" ngbbutton="" id="shortPeriod" value="1" name="ngb-radio-3">
+                            עוד חודש וחצי </label></div>
+                    <div class="radio-box"><label ngbbuttonlabel="" for="mediumPeriod" data-testid="mediumPeriod"
+                            class="btn"><input type="radio" ngbbutton="" id="mediumPeriod" value="2" name="ngb-radio-3">
+                            בין חודש וחצי ל-3 חודשים </label></div>
+                    <div class="radio-box"><label ngbbuttonlabel="" for="longPeriod" data-testid="longPeriod"
+                            class="btn"><input type="radio" ngbbutton="" id="longPeriod" value="3" name="ngb-radio-3">
+                            בעוד 3 חודשים או יותר </label></div>
+                </fieldset>
+            </section>
+            <section>
+                <fieldset>
+                    <legend><label for="numberOfPartners" aria-describedby="num-partners-comment"
+                            class="content-title">כמה שותפים ברכישת הדירה?</label></legend>
+                    <div id="num-partners-comment" class="sm-sub-content-title">לצורך בחינת הבקשה יש צורך במידע על
+                        כלל השותפים (מי שקונה את הדירה ובני/בנות זוגם - גם אם אינם הקונים)</div>
+                            class="ng-untouched ng-pristine ng-valid" aria-invalid="false">
+                            <div class="stepper"><button type="button" class="stepper-sub selected"
+                                    aria-disabled="false" aria-label="הפחתת שותפים לרכישת הדירה"
+                                    data-cc="button|button|הפחתת שותפים לרכישת הדירה"></button><input type="number"
+                                    aria-live="assertive" aria-readonly="false"
+                                    aria-label="כמה שותפים ברכישת הדירה?"><button type="button"
+                                    class="stepper-add selected" aria-disabled="false"
+                                    aria-label="הוספת שותפים לרכישת הדירה"
+                                    data-cc="button|button|הוספת שותפים לרכישת הדירה">
+                                </button>
+                            </div>        
+                </fieldset>
+            </section>
+            <div class="action-buttons"><button type="button" data-testid="back-btn" class="btn-circle-arrow-right"
+                    aria-label="חזרה לשלב הקודם">
+                </button>
+                <button (click)="saveDetailsWhichApartment5()" type="submit" data-testid="next-btn"
+                    class="btn-red-arrow-left">המשך
+                </button>
+            </div>
+        </form>
+
+    </div>
+
+</div> -->

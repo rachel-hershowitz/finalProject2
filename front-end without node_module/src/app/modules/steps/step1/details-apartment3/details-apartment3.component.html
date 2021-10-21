@@ -1,0 +1,19 @@
+<form [formGroup]="formDetailsMashkanta3" class="container col-sm-4 offset-sm-3">
+
+    <div class="range">
+        <input formControlName="amount" id="amount" type="range" min="1000" step="10000" max="4000000">
+        <label>₪ {{this.formDetailsMashkanta3.controls.amount.value}}</label>
+        <div class="wrapper-stripe">
+            <div class="stripe">סכום מקסימלי </div>
+            <span class="number">{{sum}}</span>
+        </div>
+    </div>
+
+    <button (click)="saveDetailsWhichApartment3()" type="submit" class="btn-red-arrow-left">
+        המשך
+    </button>
+    <button type="button" data-testid="back-btn" (click)="backBtn()" class="btn-red-arrow-circle-arrow-right"
+        aria-label="חזרה לשלב הקודם">
+        חזור
+    </button>
+</form>

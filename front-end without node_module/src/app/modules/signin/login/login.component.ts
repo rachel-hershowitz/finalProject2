@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   returnUrl: string;
   currentUser: User;
+  userCurrent: User = new User();
 
   constructor(private route: ActivatedRoute, private _userService: UserService, private router: Router,
     private alertService: AlertService, private _formBuilder: FormBuilder,
@@ -29,16 +30,13 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  userCurrent: User = new User();
 
   ngOnInit(): void {
-
     this.loginForm = new FormGroup({
       "userName": new FormControl(this.userCurrent.userName),
       "password": new FormControl(this.userCurrent.password)
     })
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-
   }
 
   get f() {
@@ -63,7 +61,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/Manager']);
         }
         else {
-          this.router.navigate(['/']);
+          this.router.navigate(['/StepsComponent']);
         }
       },
         error => {
