@@ -7,7 +7,7 @@ import { StepsService } from '../../steps.service';
 @Component({
   selector: 'details-apartment4',
   templateUrl: './details-apartment4.component.html',
-  styleUrls: []
+  styleUrls: ['./details-apartment4.component.scss']
 })
 export class DetailsApartment4Component implements OnInit {
 

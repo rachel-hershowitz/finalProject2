@@ -2,11 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { Step2Component } from './step2/step2.component';
-import { Step3Component } from './step3/step3.component';
 import { Step4Component } from './step4/step4.component';
-import { DetailsApartment2Component } from './step1/details-apartment2/details-apartment2.component';
-import { ApartmentComponent } from './step1/apartment/apartment.component';
 import { StepsComponent } from './steps/steps.component';
+import { Step3Component } from './step3/step3/step3.component';
 
 const ROUTE_STEPS: Routes = [
   { path: '', component: StepsComponent },

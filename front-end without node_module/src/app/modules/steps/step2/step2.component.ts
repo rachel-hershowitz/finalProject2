@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'step2',
@@ -7,11 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Step2Component implements OnInit {
 
-  constructor() { }
+  constructor(private _router: Router) { }
 
   statusBank: number = 0
 
   ngOnInit(): void {
   }
 
+  goToStep3() {
+    this._router.navigate(['/StepsComponent/step3']);
+  }
 }

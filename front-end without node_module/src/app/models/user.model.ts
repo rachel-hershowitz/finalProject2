@@ -12,6 +12,7 @@ export class User {
 
     constructor() {
         this.isCustomer = true;
-        this.status = Status["לא נפתחה פניה"];
+        // this.status = Status["לא נפתחה פניה"]
     }
+
 }

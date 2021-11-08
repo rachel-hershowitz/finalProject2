@@ -1,0 +1,22 @@
+<button (click)="showListCustomer()">צפיה בפרטי הלקוחות</button>
+
+
+<ul *ngIf="listCustomer" class="list-group">
+    <li *ngFor="let customer of listCustomer" class="list-group-item">
+        <div (click)="showDetailsCustomer(customer)" class="row">
+            <div class="col-2">{{ customer.identity }}</div>
+            <div class="col-3">{{ customer.firstName }}</div>
+            <div class="col-3">{{ customer.lastName }}</div>
+            <div class="col-4">{{ customer.status }}</div>
+        </div>
+        <div>
+            <button class="col-2" (click)="deleteCustomer(customer.identity)">מחיקה</button>
+            <button class="col-2" (click)="editCustomer(customer)">עריכה</button>
+        </div>
+    </li>
+</ul>
+
+<show-details-users [selectCustomer]=selectCustomer [selectedDetailsMashkanta]=selectedDetailsMashkanta
+    *ngIf="showDetails">
+</show-details-users>
+<edit-customer [selectedDetailsMashkanta]=selectedDetailsMashkanta *ngIf="showEdit"></edit-customer>

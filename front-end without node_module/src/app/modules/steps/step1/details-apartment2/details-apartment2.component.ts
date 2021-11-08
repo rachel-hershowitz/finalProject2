@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DetailsMashkanta } from 'src/app/models/DetailsMashkanta';
 import { StepsService } from '../../steps.service';
@@ -18,13 +18,21 @@ export class DetailsApartment2Component implements OnInit {
 
   ngOnInit(): void {
     this.formDetailsMashkanta2 = new FormGroup({
-      propertyCity: new FormControl(this.detailsMashkanta.propertyCity),
-      propertyPrice: new FormControl(this.detailsMashkanta.propertyPrice),
-      propertyMarketValue: new FormControl(this.detailsMashkanta.propertyMarketValue)
+      propertyCity: new FormControl(this.detailsMashkanta.propertyCity, [Validators.required]),
+      propertyPrice: new FormControl(this.detailsMashkanta.propertyPrice, [Validators.required]),
+      propertyMarketValue: new FormControl(this.detailsMashkanta.propertyMarketValue, [Validators.required])
     })
   }
 
+  get getForm() {
+    return this.formDetailsMashkanta2.controls;
+  }
+
   saveDetailsWhichApartment2() {
+    if (this.formDetailsMashkanta2.invalid) {
+      return;
+    }
+
     this._stepsService.saveAllDetails(this.formDetailsMashkanta2.value)
       .subscribe(data => {
         console.log(data)
@@ -32,7 +40,6 @@ export class DetailsApartment2Component implements OnInit {
         error => {
           console.log(error);
         });
-    // this._stepsService.saveDetailsWhichApartment2(this.formDetailsMashkanta2.value)
     this._router.navigate(['/StepsComponent/step1/detailsApartment3']);
   }
 

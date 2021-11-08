@@ -1,10 +1,5 @@
-
 export class DetailsMashkanta {
     userId: string;
-    salaryYou: number;
-    salaryZug: number;
-    adressHouse: string;
-    notes: string;
     whichApartment: WhichApartment;
     apartmentDesignation: ApartmentDesignation;
     propertyCity: string;
@@ -29,6 +24,25 @@ export class DetailsMashkanta {
     street: string;
     apartmentRegistration: number;
 
+    listFiles: string[] = ["file1", "file2", "file3", "file4"]
+
+    constructor() {
+        // this.propertyCity = "";
+        // this.propertyPrice = 0;
+        // this.propertyMarketValue = 0;
+        // this.amount = 0;
+        // this.contractSign = false;
+        // this.numberOfPartner = 0;
+        // this.firstName = "";
+        // this.lastName = "";
+        // this.identity = "";
+        // this.pel = "";
+        // this.email = "";
+        // this.citizenship = false;
+        // this.city = "";
+        // this.street = "";
+        // this.apartmentRegistration = 0;
+    }
 }
 
 export enum WhichApartment {
@@ -44,5 +58,5 @@ export enum HowMuchLonger {
 }
 
 export enum AreaCode {
-    "052", "053", "054"
+    "052", "053", "054", "055", "057", "058"
 }

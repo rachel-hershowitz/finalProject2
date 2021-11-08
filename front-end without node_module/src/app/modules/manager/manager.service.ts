@@ -13,4 +13,9 @@ export class ManagerService {
   getAllPersonalInformation(): Observable<DetailsMashkanta[]> {
     return this.http.get<DetailsMashkanta[]>("http://localhost:5000/getPersonalInformation");
   }
+
+  deleteCustomer(id): Observable<void> {
+    return this.http.delete<void>("http://localhost:5000/deleteCustomer/" + id);
+  }
+
 }

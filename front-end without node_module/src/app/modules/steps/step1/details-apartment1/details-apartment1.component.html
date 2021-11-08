@@ -1,0 +1,54 @@
+<form [formGroup]="formApartment" class="container col-sm-4 offset-sm-3">
+    <div class="form-group">
+        <label for="whichApartment1" class="btn active">
+            <input type="radio" id="whichApartment" value="newApartment" name="whichApartment"
+                formControlName="whichApartment" />
+            דירה חדשה
+        </label>
+        <label for="whichApartment2" class="btn active">
+            <input type="radio" id="whichApartment2" value="discountApartment" name="whichApartment"
+                formControlName="whichApartment" />
+            דירה במחיר למשתכן
+        </label>
+        <label for="whichApartment3" class="btn active">
+            <input type="radio" id="whichApartment3" value="oldApartment" name="whichApartment"
+                formControlName="whichApartment" />
+            דירה יד שניה
+        </label>
+        <div *ngIf="getForm.whichApartment.errors">
+            <div *ngIf="getForm.whichApartment.errors.required" class="alert alert-danger">
+                זהו שדה חובה
+            </div>
+        </div>
+    </div>
+
+
+    <legend class="content-title">הדירה שקונים היא...
+        <button type="button" class="btn-information-blue"> </button>
+    </legend>
+
+    <div class="form-group">
+
+        <label for="apartmentDesignation" class="btn">
+            <input type="radio" id="apartmentDesignation" value="signalApartment" name="apartmentDesignation"
+                formControlName="apartmentDesignation"> דירה יחידה
+        </label>
+        <label for="apartmentDesignation" class="btn">
+            <input type="radio" id="apartmentDesignation" value="changeApartment" formControlName="apartmentDesignation"
+                name="apartmentDesignation"> דירה חילופית
+        </label>
+        <label for="apartmentDesignation" class="btn">
+            <input type="radio" id="apartmentDesignation" value="mashkantaApartment"
+                formControlName="apartmentDesignation" name="apartmentDesignation"> דירה להשקעה
+        </label>
+        <div *ngIf="getForm.apartmentDesignation.errors">
+            <div *ngIf="getForm.apartmentDesignation.errors.required" class="alert alert-danger">
+                זהו שדה חובה
+            </div>
+        </div>
+    </div>
+
+    <button (click)="saveDetailsWhichApartment1()" type="submit" class="btn-red-arrow-left">המשך </button>
+</form>
+
+<router-outlet></router-outlet>

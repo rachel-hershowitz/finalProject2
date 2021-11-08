@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { DetailsMashkanta } from 'src/app/models/DetailsMashkanta';
@@ -16,8 +16,11 @@ export class ShowDetailsUsersComponent implements OnInit {
 
   personalInformationList: DetailsMashkanta[];
   listCustomer: User[];
+  @Input()
   selectCustomer: User;
+  @Input()
   selectedDetailsMashkanta: DetailsMashkanta;
+  showEdit: Boolean;
 
   ngOnInit(): void {
     this.getAllDetailsOfCustomers();
@@ -30,12 +33,32 @@ export class ShowDetailsUsersComponent implements OnInit {
   }
 
   selectedCustomer(c) {
+    this.showEdit = false
     this.selectCustomer = c;
     this.personalInformationList.find(x => {
       if (x.userId == c._id) {
         this.selectedDetailsMashkanta = x;
       }
     })
+  }
+
+  deleteCustomer(id) {
+    this.managerService.deleteCustomer(id).subscribe(s => {
+      alert(this.selectCustomer.firstName + " is deleted!!")
+      this.selectCustomer = null
+      this.selectedDetailsMashkanta = null
+      this.showListCustomer()
+      this.getAllDetailsOfCustomers();
+    })
+  }
+
+  editCustomer(c) {
+    this.personalInformationList.find(x => {
+      if (x.userId == c._id) {
+        this.selectedDetailsMashkanta = x;
+      }
+    })
+    this.showEdit = true;
   }
 
   getAllDetailsOfCustomers() {

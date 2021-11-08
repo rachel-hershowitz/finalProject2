@@ -7,11 +7,15 @@
             <div class="stripe">סכום מקסימלי </div>
             <span class="number">{{sum}}</span>
         </div>
+        <div *ngIf="getForm.amount.errors">
+            <div *ngIf="getForm.amount.errors.required" class="alert alert-danger">
+                זהו שדה חובה
+            </div>
+        </div>
     </div>
 
-    <button (click)="saveDetailsWhichApartment3()" type="submit" class="btn-red-arrow-left">
-        המשך
-    </button>
+    <button (click)="saveDetailsWhichApartment3()" type="submit" class="btn-red-arrow-left"> המשך </button>
+
     <button type="button" data-testid="back-btn" (click)="backBtn()" class="btn-red-arrow-circle-arrow-right"
         aria-label="חזרה לשלב הקודם">
         חזור

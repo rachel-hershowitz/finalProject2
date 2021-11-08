@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { AuthenticationService } from '../authentication.service';
@@ -29,11 +29,12 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerForm = new FormGroup({
-      "firstName": new FormControl(this.userRegisterCurrent.firstName),
-      "lastName": new FormControl(this.userRegisterCurrent.lastName),
-      "identity": new FormControl(this.userRegisterCurrent.identity),
-      "userName": new FormControl(this.userRegisterCurrent.userName),
-      "password": new FormControl(this.userRegisterCurrent.password)
+      "firstName": new FormControl(this.userRegisterCurrent.firstName, [Validators.required, Validators.minLength(2)]),
+      "lastName": new FormControl(this.userRegisterCurrent.lastName, [Validators.required, Validators.minLength(2)]),
+      "identity": new FormControl(this.userRegisterCurrent.identity, [Validators.required, Validators.pattern("[0-9]{9}")]),
+      // "identity": new FormControl(this.userRegisterCurrent.identity, [Validators.required, Validators.minLength(9), Validators.maxLength(9)]),
+      "userName": new FormControl(this.userRegisterCurrent.userName, [Validators.required, Validators.minLength(6)]),
+      "password": new FormControl(this.userRegisterCurrent.password, [Validators.required, Validators.minLength(6)])
     })
   }
 
@@ -43,7 +44,6 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-
     this.alertService.clear();
 
     if (this.registerForm.invalid) {

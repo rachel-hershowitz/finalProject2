@@ -4,66 +4,118 @@
 
     <div class="form-group">
         <input id="firstName" value="firstName" type="text" name="firstName" formControlName="firstName"
-            placeholder="שם פרטי (כפי שמופיע בת.ז.)">
+            placeholder="שם פרטי (כפי שמופיע בת.ז.)" [ngClass]="{ 'is-invalid':  getForm.firstName.errors }">
+        <div *ngIf="getForm.firstName.errors">
+            <div *ngIf="getForm.firstName.errors.required" class="alert alert-danger"> זהו שדה חובה </div>
+            <div *ngIf="getForm.firstName.errors.pattern" class="alert alert-danger"> לא לפי הכללים</div>
+            <div *ngIf="getForm.firstName.errors.minLength" class="alert alert-danger">האורך חייב להיות גדול מ2</div>
+
+        </div>
     </div>
     <div class="form-group">
         <input id="lastName" value="lastName" type="text" name="lastName" formControlName="lastName"
             placeholder="שם פרטי (כפי שמופיע בת.ז.)">
+        <div *ngIf="getForm.lastName.errors">
+            <div *ngIf="getForm.lastName.errors.required" class="alert alert-danger"> זהו שדה חובה </div>
+        </div>
     </div>
     <div class="form-group">
         <input id="identity" value="identity" type="text" name="identity" formControlName="identity"
             placeholder="תעודת זהות">
+        <div *ngIf="getForm.identity.errors">
+            <div *ngIf="getForm.identity.errors.required" class="alert alert-danger"> זהו שדה חובה </div>
+            <!-- <div *ngIf="getForm.identity.errors.pattern" class="alert alert-danger">אורך 9 תוים </div> -->
+        </div>
     </div>
     <div class="form-group">
         <input id="areaCode" value="areaCode" type="text" name="areaCode" formControlName="areaCode">
+        <div *ngIf="getForm.areaCode.errors">
+            <div *ngIf="getForm.areaCode.errors.required" class="alert alert-danger"> זהו שדה חובה </div>
+        </div>
     </div>
     <div class="form-group">
         <input id="pel" value="pel" type="text" name="pel" formControlName="pel" placeholder="פלאפון נייד">
+        <div *ngIf="getForm.pel.errors">
+            <div *ngIf="getForm.pel.errors.required" class="alert alert-danger"> זהו שדה חובה </div>
+        </div>
     </div>
     <div class="form-group">
         <input id="email" value="email" type="text" name="email" formControlName="email" placeholder="כתובת מייל">
+        <div *ngIf="getForm.email.errors">
+            <div *ngIf="getForm.email.errors.required" class="alert alert-danger"> זהו שדה חובה </div>
+            <!-- <div *ngIf="getForm.email.errors.pattern" class="alert alert-danger">יש לכתוב כתובת מייל נכונה </div> -->
+        </div>
     </div>
 
     <p>תאריך לידה </p>
-    <!-- <div class="form-group">
-        <input id="year" value="year" type="text" name="year" formControlName="year" placeholder="תאריך לידה">
-        <input id="month" value="month" type="text" name="month" formControlName="month" placeholder="תאריך לידה">
-        <input id="day" value="birthDate" type="text" name="day" formControlName="day" placeholder="תאריך לידה">
-    </div> -->
     <div class="form-group">
         <input type="birthDate" id="birthDate" value="birthDate" type="text" name="birthDate"
             formControlName="birthDate" placeholder="תאריך לידה">
+        <div *ngIf="getForm.birthDate.errors">
+            <div *ngIf="getForm.birthDate.errors.required" class="alert alert-danger"> זהו שדה חובה </div>
+            <!-- <div *ngIf="getForm.birthDate.errors.pattern" class="alert alert-danger">יש לכתוב תאריך לידה בפורמט
+                dd/mm/yyyy </div> -->
+        </div>
     </div>
     <div class="form-group">
         <input type="countryOfBirth" id="countryOfBirth" value="countryOfBirth" type="text" name="countryOfBirth"
             formControlName="countryOfBirth" placeholder="ארץ לידה">
+        <div *ngIf="getForm.countryOfBirth.errors">
+            <div *ngIf="getForm.countryOfBirth.errors.required" class="alert alert-danger"> זהו שדה חובה </div>
+        </div>
     </div>
 
     <p>יש לך אזרחות/תושבות מס נוספת? </p>
     <div class="form-group">
+        <input id="citizenship" value="true" type="radio" name="citizenship" formControlName="citizenship"
+            placeholder="כן">
+        כן
+        <input id="citizenship" value="false" type="radio" name="citizenship" formControlName="citizenship"
+            placeholder="לא">
+        לא
+        <div *ngIf="getForm.citizenship.errors">
+            <div *ngIf="getForm.citizenship.errors.required" class="alert alert-danger"> זהו שדה חובה </div>
+        </div>
+    </div>
+
+    <div class="form-group">
         <input id="city" value="city" type="text" name="city" formControlName="city" placeholder="עיר/יישוב">
+        <div *ngIf="getForm.city.errors">
+            <div *ngIf="getForm.city.errors.required" class="alert alert-danger"> זהו שדה חובה </div>
+        </div>
     </div>
     <div class="form-group">
         <input id="street" value="street" type="text" name="street" formControlName="street" placeholder="רחוב">
+        <div *ngIf="getForm.street.errors">
+            <div *ngIf="getForm.street.errors.required" class="alert alert-danger"> זהו שדה חובה </div>
+        </div>
     </div>
     <div class="form-group">
         <input id="birthDate" value="birthDate" type="text" name="birthDate" formControlName="birthDate"
             placeholder="מספר">
+        <div *ngIf="getForm.birthDate.errors">
+            <div *ngIf="getForm.birthDate.errors.required" class="alert alert-danger"> זהו שדה חובה </div>
+        </div>
     </div>
 
     האם הדירה הנרכשת תרשם על שמך?
     <div class="form-group">
-        <input id="apartmentRegistration" value="true" type="text" name="apartmentRegistration"
+        <input id="apartmentRegistration" value="true" type="radio" name="apartmentRegistration"
             formControlName="apartmentRegistration" placeholder="כן">
-    </div>
-    <div class="form-group">
-        <input id="apartmentRegistration" value="false" type="text" name="apartmentRegistration"
+        כן
+        <input id="apartmentRegistration" value="false" type="radio" name="apartmentRegistration"
             formControlName="apartmentRegistration" placeholder="לא">
+        לא
+
+        <div *ngIf="getForm.apartmentRegistration.errors">
+            <div *ngIf="getForm.apartmentRegistration.errors.required" class="alert alert-danger"> זהו שדה חובה </div>
+        </div>
     </div>
 
-    <button (click)="saveDetailsWhichApartment6()" type="submit" data-testid="next-btn" class="btn-red-arrow-left">המשך
-    </button>
-    <button type="button" data-testid="back-btn" (click)="backBtn()" class="btn-circle-arrow-right"
-        aria-label="חזרה לשלב הקודם">jhjk</button>
+
+    <div class="action-buttons">
+        <button (click)="saveDetailsWhichApartment6()" type="submit" class="btn-red-arrow-left">המשך</button>
+        <button type="button" (click)="backBtn()" class="btn-circle-arrow-right">חזור</button>
+    </div>
 
 </form>

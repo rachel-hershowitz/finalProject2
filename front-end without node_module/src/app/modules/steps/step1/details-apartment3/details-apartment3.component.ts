@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DetailsMashkanta } from 'src/app/models/DetailsMashkanta';
 import { StepsService } from '../../steps.service';
@@ -19,11 +19,19 @@ export class DetailsApartment3Component implements OnInit {
 
   ngOnInit(): void {
     this.formDetailsMashkanta3 = new FormGroup({
-      amount: new FormControl(this.detailsMashkanta.amount)
+      amount: new FormControl(this.detailsMashkanta.amount, [Validators.required])
     })
   }
 
+  get getForm() {
+    return this.formDetailsMashkanta3.controls;
+  }
+
   saveDetailsWhichApartment3() {
+    if (this.formDetailsMashkanta3.invalid) {
+      return;
+    }
+
     this._stepService.saveAllDetails(this.formDetailsMashkanta3.value)
       .subscribe(data => {
         console.log(data)

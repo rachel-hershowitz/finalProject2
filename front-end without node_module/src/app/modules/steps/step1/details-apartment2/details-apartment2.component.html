@@ -5,25 +5,29 @@
     <div class="form-group">
         <label for="propertyCity">propertyCity</label>
         <input type="text" formControlName="propertyCity" class="form-control" />
+        <div *ngIf="getForm.propertyCity.errors">
+            <div *ngIf="getForm.propertyCity.errors.required" class="alert alert-danger"> זהו שדה חובה </div>
+        </div>
     </div>
 
     <div class="form-group">
         <label for="propertyPrice">propertyPrice</label>
         <input type="text" formControlName="propertyPrice" class="form-control" />
+        <div *ngIf="getForm.propertyPrice.errors">
+            <div *ngIf="getForm.propertyPrice.errors.required" class="alert alert-danger"> זהו שדה חובה </div>
+        </div>
     </div>
 
     <div class="form-group">
         <label for="propertyMarketValue">propertyMarketValue</label>
         <input type="text" formControlName="propertyMarketValue" class="form-control" />
+        <div *ngIf="getForm.propertyMarketValue.errors">
+            <div *ngIf="getForm.propertyMarketValue.errors.required" class="alert alert-danger"> זהו שדה חובה </div>
+        </div>
     </div>
 
-
-    <button (click)="saveDetailsWhichApartment2()" type="submit" data-testid="next-btn" class="btn-red-arrow-left">המשך
-    </button>
-    <button type="button" data-testid="back-btn" (click)="backBtn()" class="btn-red-arrow-circle-arrow-right"
-        aria-label="חזרה לשלב הקודם">
-        חזור
-    </button>
+    <button (click)="saveDetailsWhichApartment2()" type="submit" class="btn-red-arrow-left">המשך </button>
+    <button type="button" (click)="backBtn()" class="btn-red-arrow-circle-arrow-right"> חזור </button>
 
 </form>
 

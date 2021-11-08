@@ -1,28 +1,8 @@
-<button (click)="showListCustomer()">צפיה בפרטי הלקוחות</button>
-
-<ul *ngIf="listCustomer" class="list-group">
-    <li (click)="selectedCustomer(customer)" *ngFor="let customer of listCustomer" class="list-group-item">
-        <div class="row">
-            <div class="col-3">{{ customer.identity }}</div>
-            <div class="col-3">{{ customer.firstName }}</div>
-            <div class="col-3">{{ customer.lastName }}</div>
-            <div class="col-3">{{ customer.status }}</div>
-        </div>
-    </li>
-</ul>
-
-<br>
-
 <ul *ngIf="selectedDetailsMashkanta" class="list-group">
+
     <p>הלקוח הנבחר: </p>
     <li class="list-group-item">
 
-        <div class="row">
-            <div class="col-3">{{selectedDetailsMashkanta.propertyCity}}</div>
-            <div class="col-3">{{selectedDetailsMashkanta.propertyPrice}}</div>
-            <div class="col-3">{{selectedDetailsMashkanta.propertyMarketValue}}</div>
-            <div class="col-3">{{selectedDetailsMashkanta.amount}}</div>
-        </div>
         <div class="row">
             <div class="col-3">{{selectedDetailsMashkanta.firstName}}</div>
             <div class="col-3">{{selectedDetailsMashkanta.lastName}}</div>
@@ -30,16 +10,30 @@
             <div class="col-3">{{selectedDetailsMashkanta.areaCode}}</div>
         </div>
         <div class="row">
-            <div class="col-6">{{selectedDetailsMashkanta.pel}}</div>
-            <div class="col-6">{{selectedDetailsMashkanta.email}}</div>
+            <div class="col-3">{{selectedDetailsMashkanta.propertyCity}}</div>
+            <div class="col-3">{{selectedDetailsMashkanta.propertyPrice}}</div>
+            <div class="col-3">{{selectedDetailsMashkanta.propertyMarketValue}}</div>
+            <div class="col-3">{{selectedDetailsMashkanta.amount}}</div>
         </div>
         <div class="row">
-            <div class="col-2">{{selectedDetailsMashkanta.birthDate}}</div>
-            <div class="col-2">{{selectedDetailsMashkanta.countryOfBirth}}</div>
-            <div class="col-2">{{selectedDetailsMashkanta.citizenship}}</div>
-            <div class="col-2">{{selectedDetailsMashkanta.city}}</div>
-            <div class="col-2">{{selectedDetailsMashkanta.street}}</div>
-            <div class="col-2">{{selectedDetailsMashkanta.apartmentRegistration}}</div>
+            <div class="col-3">{{selectedDetailsMashkanta.citizenship}}</div>
+            <div class="col-3">{{selectedDetailsMashkanta.city}}</div>
+            <div class="col-3">{{selectedDetailsMashkanta.street}}</div>
+            <div class="col-3">{{selectedDetailsMashkanta.apartmentRegistration}}</div>
         </div>
+        <div class="row">
+            <div class="col-3">{{selectedDetailsMashkanta.pel}}</div>
+            <div class="col-3">{{selectedDetailsMashkanta.email}}</div>
+            <div class="col-3">{{selectedDetailsMashkanta.birthDate}}</div>
+            <div class="col-3">{{selectedDetailsMashkanta.countryOfBirth}}</div>
+        </div>
+        <div class="row">
+            <div class="col-6">{{selectedDetailsMashkanta.whichApartment }}</div>
+            <div class="col-6">{{selectedDetailsMashkanta.apartmentDesignation}}</div>
+        </div>
+
     </li>
 </ul>
+
+<chat [isManager]=true></chat>
+<!-- <chat [currentUser]=selectCustomer [isManager]=true></chat> -->

@@ -1,0 +1,33 @@
+<div class="container">
+    <h4 *ngIf="isManager">כאן תוכלו לכתוב ללקוח...</h4>
+    <h4 *ngIf="!isManager">כאן תוכלו לכתוב ליועץ...</h4>
+
+    <!-- <p><a href="https://github.com/kolkov/angular-editor">Get it here</a></p> -->
+
+    <!-- <angular-editor id="editor1" [(ngModel)]="htmlContent1" [config]="config1" (ngModelChange)="onChange($event)"
+        (blur)="onBlur($event)">
+    </angular-editor> -->
+
+    <!-- <p class="html"> HTML Output: {{ htmlContent1 }} </p> -->
+
+    <form [formGroup]="messageForm">
+        <angular-editor autofocus="true" id="editor2" formControlName="dataMessage" [config]="config2">
+        </angular-editor>
+    </form>
+
+    <!-- <p> Form Value: {{ messageForm.value.dataMessage }} </p> -->
+    <!-- <p> Form Status: {{ messageForm.status }} </p> -->
+
+    <button (click)="sendMessage()">שלח</button> <br>
+
+
+    <ul *ngIf="listAllMessages" class="card">
+        <li *ngFor="let message of listAllMessages" class="list-group-item">
+            <p *ngIf="message.fromCustomer">{{currentUser.firstName }}</p>
+            <p *ngIf="!message.fromCustomer">יועץ</p>
+            <div>{{ message.dataMessage }}</div>
+        </li>
+    </ul>
+    <br>
+
+</div>
